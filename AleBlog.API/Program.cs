@@ -19,7 +19,7 @@ namespace AleBlog.API
                 .ConfigureWebHostDefaults(builder =>
                 {
                     builder.ConfigureKestrel(options =>{options.AddServerHeader = false;})
-                    .UseUrls("http://*:8565")
+                    .UseUrls("http://*:5000")
                     .UseStartup<Program>();
                 }).Build().RunAsync();
 
@@ -28,6 +28,20 @@ namespace AleBlog.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers().AddNewtonsoftJson();
+
+            services.AddCors(option =>
+            {
+                option.AddPolicy("CorsApp",
+                    builder =>
+                    {
+                        builder.AllowAnyMethod()
+                    .SetIsOriginAllowed(_ => true)
+                    .AllowAnyHeader()
+                    .AllowCredentials();
+
+                    });
+            });
+
 
             // 路由配置
             services.AddRouting(options =>
@@ -77,7 +91,7 @@ namespace AleBlog.API
             // 响应缓存
             app.UseResponseCaching();
             //跨域
-            app.UseCors();
+            app.UseCors("CorsApp");
             //HTTPS
             app.UseHttpsRedirection();
             //路由映射

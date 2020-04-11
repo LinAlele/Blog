@@ -34,7 +34,6 @@ D:\代码库\AleBlog.API\AleBlog.API\obj\Debug\netcoreapp3.1\AleBlog.API.dll
 D:\代码库\AleBlog.API\AleBlog.API\obj\Debug\netcoreapp3.1\AleBlog.API.pdb
 D:\代码库\AleBlog.API\AleBlog.API\obj\Debug\netcoreapp3.1\AleBlog.API.genruntimeconfig.cache
 D:\代码库\AleBlog.API\AleBlog.API\bin\Debug\netcoreapp3.1\AleBlog.API.xml
-D:\代码库\AleBlog\AleBlog.API\obj\Debug\netcoreapp3.1\AleBlog.API.csprojAssemblyReference.cache
 D:\代码库\AleBlog\AleBlog.API\obj\Debug\netcoreapp3.1\AleBlog.API.AssemblyInfoInputs.cache
 D:\代码库\AleBlog\AleBlog.API\obj\Debug\netcoreapp3.1\AleBlog.API.AssemblyInfo.cs
 D:\代码库\AleBlog\AleBlog.API\obj\Debug\netcoreapp3.1\AleBlog.API.dll

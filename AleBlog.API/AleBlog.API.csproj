@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Dto\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 

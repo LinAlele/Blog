@@ -9,7 +9,7 @@ namespace AleBlog.API.BaseStuct
 {
     public class AleBlogDbContext:DbContext
     {
-        public DbSet<page> Page { get; set; }
+        public DbSet<Page> Page { get; set; }
         public DbSet<stu> Stu { get; set; }
     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

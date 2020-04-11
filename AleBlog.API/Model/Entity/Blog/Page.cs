@@ -1,21 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AleBlog.API.Model.Entity.Blog
 {
-    public class page
+    public class Page
     {
         /// <summary>
         /// 文章自增ID
         /// </summary>
         [Key]
-        public int page_id { get; set; }
+        public int Page_Id { get; set; }
 
         /// <summary>
         /// 用户uid
         /// </summary>
         public int user_uid { get; set; }
 
-        
         /// <summary>
         /// 用户名称
         /// </summary>
@@ -49,7 +49,7 @@ namespace AleBlog.API.Model.Entity.Blog
         /// <summary>
         /// 添加时间
         /// </summary>
-        public int addtime { get; set; }
+        public int Create_Dt { get; set; }
 
         /// <summary>
         /// 备注

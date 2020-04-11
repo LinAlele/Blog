@@ -4,64 +4,96 @@
         <name>AleBlog.API</name>
     </assembly>
     <members>
-        <member name="M:AleBlog.API.Controllers.TestController.GetTest(System.String)">
+        <member name="M:AleBlog.API.Controllers.BlogController.QueryPageTitleAsync(AleBlog.API.Model.Dto.Blog.PageLimit)">
             <summary>
             返回测试数据
             </summary>
-            <param name="url"></param>
+            <param name="pl"></param>
             <returns></returns>
         </member>
-        <member name="P:AleBlog.API.Model.Entity.Blog.page.page_id">
+        <member name="M:AleBlog.API.Controllers.BlogController.GetDateTime(System.Int32)">
             <summary>
-            文章自增ID
+            时间戳Timestamp转换成日期  
+            </summary>
+            <param name="timeStamp"></param>
+            <returns></returns>
+        </member>
+        <member name="P:AleBlog.API.Model.Dto.Blog.PageLimit.Page">
+            <summary>
+            页码
             </summary>
         </member>
-        <member name="P:AleBlog.API.Model.Entity.Blog.page.user_uid">
+        <member name="P:AleBlog.API.Model.Dto.Blog.PageLimit.Limit">
             <summary>
-            用户uid
+            限制条数
             </summary>
         </member>
-        <member name="P:AleBlog.API.Model.Entity.Blog.page.user_name">
-            <summary>
-            用户名称
-            </summary>
-        </member>
-        <member name="P:AleBlog.API.Model.Entity.Blog.page.item_id">
-            <summary>
-            项目节点组id
-            </summary>
-        </member>
-        <member name="P:AleBlog.API.Model.Entity.Blog.page.cat_id">
-            <summary>
-            项目 组子节点 id
-            </summary>
-        </member>
-        <member name="P:AleBlog.API.Model.Entity.Blog.page.page_title">
+        <member name="P:AleBlog.API.Model.Dto.Blog.pageTitleDto.Page_Title">
             <summary>
              标题
             </summary>
         </member>
-        <member name="P:AleBlog.API.Model.Entity.Blog.page.page_content">
+        <member name="P:AleBlog.API.Model.Dto.Blog.pageTitleDto.Create_Dt">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:AleBlog.API.Model.Dto.Blog.pageTitleDto.Year">
+            <summary>
+            创建年份
+            </summary>
+        </member>
+        <member name="P:AleBlog.API.Model.Entity.Blog.Page.Page_Id">
+            <summary>
+            文章自增ID
+            </summary>
+        </member>
+        <member name="P:AleBlog.API.Model.Entity.Blog.Page.user_uid">
+            <summary>
+            用户uid
+            </summary>
+        </member>
+        <member name="P:AleBlog.API.Model.Entity.Blog.Page.user_name">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:AleBlog.API.Model.Entity.Blog.Page.item_id">
+            <summary>
+            项目节点组id
+            </summary>
+        </member>
+        <member name="P:AleBlog.API.Model.Entity.Blog.Page.cat_id">
+            <summary>
+            项目 组子节点 id
+            </summary>
+        </member>
+        <member name="P:AleBlog.API.Model.Entity.Blog.Page.page_title">
+            <summary>
+             标题
+            </summary>
+        </member>
+        <member name="P:AleBlog.API.Model.Entity.Blog.Page.page_content">
             <summary>
             内容
             </summary>
         </member>
-        <member name="P:AleBlog.API.Model.Entity.Blog.page.s_number">
+        <member name="P:AleBlog.API.Model.Entity.Blog.Page.s_number">
             <summary>
             若超99个字符 markdown 不做渲染
             </summary>
         </member>
-        <member name="P:AleBlog.API.Model.Entity.Blog.page.addtime">
+        <member name="P:AleBlog.API.Model.Entity.Blog.Page.Create_Dt">
             <summary>
             添加时间
             </summary>
         </member>
-        <member name="P:AleBlog.API.Model.Entity.Blog.page.page_comments">
+        <member name="P:AleBlog.API.Model.Entity.Blog.Page.page_comments">
             <summary>
             备注
             </summary>
         </member>
-        <member name="P:AleBlog.API.Model.Entity.Blog.page.is_del">
+        <member name="P:AleBlog.API.Model.Entity.Blog.Page.is_del">
             <summary>
             逻辑删除
             </summary>
