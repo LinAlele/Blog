@@ -1,14 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Test";
 }
-
-    @*<div class="post-box">
-        <input type="text" id="title" placeholder="标题" autocomplete="off" value="" />
-        <input type="text" id="author" placeholder="作者" autocomplete="off" value="" />
-        <input type="text" id="url" placeholder="URL" autocomplete="off" value="" />
-        <input type="datetime" id="time" placeholder="时间" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")" />
-    </div>*@
-    <div id="fuckresult" class="page-blank">
+    <div id="page-title-tpl" class="page-blank">
         <script id="tpl" type="text/template">
             {{each data}}
             <h3>
@@ -28,22 +21,12 @@
 <script src="~/js/template-web.js"></script>
 <script>
     var api_domain = "http://localhost:8036";
-    //var data = {
-    //    items: [{ 'name': '名字一', 'val': '数据一' },
-    //    { 'name': '名字二', 'val': '数据二' },
-    //    { 'name': '名字三', 'val': '数据三' },
-    //    { 'name': '名字四', 'val': '数据四' }
-    //    ]
-    //}
-    //var html = template('tpl', data);
-
-    //document.querySelector('#fuckresult').innerHTML = html;
 
     axios.get(`${api_domain}/blog/page/querypage?Page=1&Limit=20`,{ withCredentials: true }).then(function (response) {
 
         if (response.status == '200') {
             var html = template('tpl', response.data);
-            document.querySelector('#fuckresult').innerHTML = html;
+            document.querySelector('#page-title-tpl').innerHTML = html;
         }
         else {
             console.log(response.data.message);
