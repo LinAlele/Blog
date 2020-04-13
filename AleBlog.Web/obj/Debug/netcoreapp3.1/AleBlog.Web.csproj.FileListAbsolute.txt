@@ -18,7 +18,6 @@ D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.TagHelpers.
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.TagHelpers.output.cache
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.RazorCoreGenerate.cache
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -351,3 +350,4 @@ D:\代码库\AleBlog\AleBlog.Web\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeA
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.csproj.CoreCompileInputs.cache
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.MvcApplicationPartsAssemblyInfo.cs
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.MvcApplicationPartsAssemblyInfo.cache
+D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Page.cshtml.g.cs

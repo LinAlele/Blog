@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace AleBlog.API.Model.Dto.Blog
 {
-    public class pageTitleDto
+    public class PageTitleDto
     {
         public int Page_Id { get; set; }
         /// <summary>
@@ -26,6 +23,6 @@ namespace AleBlog.API.Model.Dto.Blog
     public class QueryPageTitlle
     {
         public string Year { get; set; }
-        public IList<pageTitleDto> PageTitleDtos { get; set; }
+        public IList<PageTitleDto> PageTitleDtos { get; set; }
     }
 }

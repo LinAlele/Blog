@@ -3,53 +3,77 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @RenderSection("CSS", required: false)
     <title>@ViewData["Title"] - AleBlog</title>
-     <style>
-         html {
-             font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
-         }
+    <style>
+        html {
+            font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+        }
 
-         a {
-             color: #000000;
-             text-decoration: none;
-         }
+        a {
+            color: #000000;
+            text-decoration: none;
+        }
 
-             a:hover {
-                 color: #919191;
-                 transition: color .2s ease,border-color .2s ease,background .2s ease,opacity .2s ease;
-                 text-decoration: none;
-             }
+            a:hover {
+                color: #919191;
+                transition: color .2s ease,border-color .2s ease,background .2s ease,opacity .2s ease;
+                text-decoration: none;
+            }
 
-         .navbar {
-             height: 4rem;
-             line-height: 4rem;
-             width: 100%;
-         }
-         .navbar .container{
-             width:auto;
-             max-width:1080px;
-             text-align:center;
-             margin:0 auto;
-             display:flex;
-             justify-content:space-between;
-         }
-         .navbar-header a:hover,
-         .navbar .menu a:hover {
-             background-color: transparent;
-         }
+        .navbar {
+            height: 4rem;
+            line-height: 4rem;
+            width: 100%;
+        }
 
-         .page-blank{
-             width:100%;
-             max-width:900px;
-             margin:0 auto;
-             padding-top:2rem;
-         }
-         .article-item-createdt {
-             text-align: right;
-             float: right;
-             color: #858585;
-         }
-     </style>
+            .navbar .container {
+                width: auto;
+                max-width: 1080px;
+                text-align: center;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+            }
+
+        .main {
+            flex-grow: 1;
+            flex-shrink: 0;
+            flex-basis: auto;
+        }
+
+            .navbar-header a:hover,
+            .navbar .menu a:hover {
+                background-color: transparent;
+            }
+
+        .page-blank {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-top: 2rem;
+        }
+
+        .article-item-createdt {
+            text-align: right;
+            float: right;
+            color: #858585;
+        }
+
+        /*page*/
+        .page-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 780px;
+            margin: 0 auto;
+            padding-top: 2rem;
+        }
+
+        .page-content {
+            padding-top: 2rem;
+            text-align: justify;
+        }
+    </style>
 </head>
 <body>
     <div class="blank">

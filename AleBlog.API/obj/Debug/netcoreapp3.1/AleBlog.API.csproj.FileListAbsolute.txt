@@ -105,3 +105,4 @@ D:\代码库\AleBlog\AleBlog.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFramewo
 D:\代码库\AleBlog\AleBlog.API\obj\Debug\netcoreapp3.1\AleBlog.API.csproj.CoreCompileInputs.cache
 D:\代码库\AleBlog\AleBlog.API\obj\Debug\netcoreapp3.1\AleBlog.API.MvcApplicationPartsAssemblyInfo.cs
 D:\代码库\AleBlog\AleBlog.API\obj\Debug\netcoreapp3.1\AleBlog.API.MvcApplicationPartsAssemblyInfo.cache
+D:\代码库\AleBlog\AleBlog.API\obj\Debug\netcoreapp3.1\AleBlog.API.csprojAssemblyReference.cache

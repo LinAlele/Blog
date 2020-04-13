@@ -40,6 +40,23 @@ namespace AleBlog.API.Controllers
         }
 
         /// <summary>
+        /// 返回博客文
+        /// </summary>
+        /// <param name="page_id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("page")]
+        [ResponseCache(CacheProfileName = "Default", VaryByQueryKeys = new string[] { "page_id" })]
+        public async Task<Responce<PageDto>> GetPageAsync(int page_id)
+        {
+       
+
+            var page = await _context.Page.FirstOrDefaultAsync(f=>f.Page_Id==page_id);
+            
+            return new Responce<PageDto>() {  Result=new PageDto {  page_content=page.page_content} };
+        }
+
+        /// <summary>
         /// 返回测试数据
         /// </summary>
         /// <param name="pl"></param>
@@ -59,7 +76,7 @@ namespace AleBlog.API.Controllers
             var result = pages.OrderByDescending(o => o.Page_Id)
                 .Skip((pl.Page - 1) * pl.Limit)
                 .Take(pl.Limit)
-                .Select(s => new pageTitleDto{
+                .Select(s => new PageTitleDto{
                     Page_Id =s.Page_Id,
                     Page_Title = s.page_title,
                     Create_Dt= GetDateTime(s.Create_Dt).ToString("MMMM dd, yyyy HH:mm:ss", new CultureInfo("en-us")),

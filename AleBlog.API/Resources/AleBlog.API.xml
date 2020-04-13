@@ -4,6 +4,13 @@
         <name>AleBlog.API</name>
     </assembly>
     <members>
+        <member name="M:AleBlog.API.Controllers.BlogController.GetPageAsync(System.Int32)">
+            <summary>
+            返回博客文
+            </summary>
+            <param name="page_id"></param>
+            <returns></returns>
+        </member>
         <member name="M:AleBlog.API.Controllers.BlogController.QueryPageTitleAsync(AleBlog.API.Model.Dto.Blog.PageLimit)">
             <summary>
             返回测试数据
@@ -28,17 +35,17 @@
             限制条数
             </summary>
         </member>
-        <member name="P:AleBlog.API.Model.Dto.Blog.pageTitleDto.Page_Title">
+        <member name="P:AleBlog.API.Model.Dto.Blog.PageTitleDto.Page_Title">
             <summary>
              标题
             </summary>
         </member>
-        <member name="P:AleBlog.API.Model.Dto.Blog.pageTitleDto.Create_Dt">
+        <member name="P:AleBlog.API.Model.Dto.Blog.PageTitleDto.Create_Dt">
             <summary>
             创建时间
             </summary>
         </member>
-        <member name="P:AleBlog.API.Model.Dto.Blog.pageTitleDto.Year">
+        <member name="P:AleBlog.API.Model.Dto.Blog.PageTitleDto.Year">
             <summary>
             创建年份
             </summary>

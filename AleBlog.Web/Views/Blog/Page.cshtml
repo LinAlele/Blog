@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "文章详情";
+}
+@section CSS{
+    <link rel="stylesheet" href="~/lib/editor.md/css/editormd.preview.min.css" />
+}
+<div class="main">
+    <div class="container">
+        <div class="page-wrap">
+            <script id="page_tmpl" type="text/template">
+                <div class="post-content" id="content">
+                    <textarea style="display:none;">{{@@result.page_content}}</textarea>
+                </div>
+            </script>
+        </div>
+    </div>
+</div>
+    @section Scripts{
+        <script src="~/js/axios.min.js"></script>
+        <script src="~/js/template-web.js"></script>
+        <script src="~/js/jquery-3.4.1.min.js"></script>
+        <script src="~/lib/editor.md/editormd.min.js"></script>
+        <script src="~/lib/editor.md/lib/marked.min.js"></script>
+        <script src="~/lib/editor.md/lib/prettify.min.js"></script>
+
+        <script>
+
+
+            var api_domain = "http://localhost:8036";
+            /**
+               * [通过参数名获取url中的参数值]
+               * 示例URL:https://;localhost:80/Home/Page?page_id=71
+               * param  {[string]} queryName [参数名]
+               * return {[string]}           [参数值]
+               */
+            function getQueryVariable(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) { return pair[1]; }
+                }
+                return (false);
+            }
+            console.log("page_id:" + getQueryVariable("page_id"));
+
+            var page_id = getQueryVariable("page_id");
+
+            axios.get(`${api_domain}/blog/page?page_id=${page_id}`).then(function (response) {
+                if (response.status == '200') {
+                    var html = template('page_tmpl', response.data);
+                    document.querySelector('.page-wrap').innerHTML = html;
+                }
+                else {
+                    console.log(response.data.message);
+                }
+                editormd.markdownToHTML("content");
+            });
+        </script>
+    }

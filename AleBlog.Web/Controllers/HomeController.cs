@@ -17,5 +17,11 @@ namespace AleBlog.Web.Controllers
         {
             return View();
         }
+
+        [Route("/Home/Page")]
+        public IActionResult Page()
+        {
+            return View();
+        }
     }
 }
