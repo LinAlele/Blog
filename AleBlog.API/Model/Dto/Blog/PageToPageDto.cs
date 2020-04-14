@@ -8,6 +8,6 @@ namespace AleBlog.API.Model.Dto.Blog
     public class PageToPageDto
     {
         public string Title { get; set; }
-        public string Page_Id { get; set; }
+        public int Page_Id { get; set; }
     }
 }

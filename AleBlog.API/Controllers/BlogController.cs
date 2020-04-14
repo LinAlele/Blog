@@ -59,9 +59,39 @@ namespace AleBlog.API.Controllers
                 return response;
             }
 
-            
+            var previous = await _context.Page
+                .Where(w => w.Create_Dt > page.Create_Dt)
+                .Take(1)
+                .FirstOrDefaultAsync();
 
-            return new Responce<PageDto>() {  Result=new PageDto {  page_content=page.page_content} };
+            var next = await _context.Page
+                .Where(w => w.Create_Dt < page.Create_Dt)
+                .OrderByDescending(o => o.Create_Dt)
+                .Take(1)
+                .FirstOrDefaultAsync();
+
+           var result = new PageDto
+            {
+                Author = page.user_name,
+                Title = page.page_title,
+                Page_Content = page.page_content,
+                Create_Dt_Str = GetDateTime(page.Create_Dt).ToString("yyyy-MM-dd HH:mm:ss"),
+                Previous = previous ==null?null: new PageToPageDto()
+                {
+                     Page_Id=previous.Page_Id,
+                      Title = previous.page_title
+                } ,  
+                Next = next == null?null: new PageToPageDto()
+                {
+                     Page_Id= next.Page_Id,
+                      Title = next.page_title
+                }
+
+            };
+
+            response.Result = result;
+
+            return response;
         }
 
         /// <summary>

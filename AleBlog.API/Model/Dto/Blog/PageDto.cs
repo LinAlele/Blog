@@ -11,11 +11,11 @@ namespace AleBlog.API.Model.Dto.Blog
         /// <summary>
         /// 标题
         /// </summary>
-        public string title { get; set; }
+        public string Title { get; set; }
         /// <summary>
         /// 内容 markdown 
         /// </summary>
-        public string page_content { get; set; }
+        public string Page_Content { get; set; }
         /// <summary>
         /// markdown 转 html
         /// </summary>
