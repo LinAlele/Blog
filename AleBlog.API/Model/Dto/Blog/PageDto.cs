@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AleBlog.API.Model.Entity.Blog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,6 +29,8 @@ namespace AleBlog.API.Model.Dto.Blog
         /// </summary>
         public string Create_Dt_Str { get; set; }
 
-        public string 
+        public PageToPageDto Previous{ get; set; }
+
+        public PageToPageDto Next { get; set; }
     }
 }
