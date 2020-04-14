@@ -49,10 +49,18 @@ namespace AleBlog.API.Controllers
         [ResponseCache(CacheProfileName = "Default", VaryByQueryKeys = new string[] { "page_id" })]
         public async Task<Responce<PageDto>> GetPageAsync(int page_id)
         {
-       
+            var response = new Responce<PageDto>();
 
             var page = await _context.Page.FirstOrDefaultAsync(f=>f.Page_Id==page_id);
+
+            if (page.Equals(null))
+            {
+                response.Message = $"page_id:{page_id}不存在";
+                return response;
+            }
+
             
+
             return new Responce<PageDto>() {  Result=new PageDto {  page_content=page.page_content} };
         }
 
