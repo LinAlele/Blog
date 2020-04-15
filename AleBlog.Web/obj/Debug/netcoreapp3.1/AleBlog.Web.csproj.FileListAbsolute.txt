@@ -9,7 +9,6 @@ D:\代码库\AleBlog\AleBlog.Web\bin\Debug\netcoreapp3.1\AleBlog.Web.dll
 D:\代码库\AleBlog\AleBlog.Web\bin\Debug\netcoreapp3.1\AleBlog.Web.pdb
 D:\代码库\AleBlog\AleBlog.Web\bin\Debug\netcoreapp3.1\AleBlog.Web.Views.dll
 D:\代码库\AleBlog\AleBlog.Web\bin\Debug\netcoreapp3.1\AleBlog.Web.Views.pdb
-D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.csprojAssemblyReference.cache
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.RazorAssemblyInfo.cache
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.RazorAssemblyInfo.cs
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.AssemblyInfoInputs.cache
