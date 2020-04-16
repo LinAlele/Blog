@@ -58,9 +58,10 @@ namespace AleBlog.API.Controllers
                 response.Message = $"page_id:{page_id}不存在";
                 return response;
             }
-
+            
             var previous = await _context.Page
                 .Where(w => w.Create_Dt > page.Create_Dt)
+                 .OrderBy(o => o.Create_Dt)
                 .Take(1)
                 .FirstOrDefaultAsync();
 
@@ -104,14 +105,18 @@ namespace AleBlog.API.Controllers
         [ResponseCache(CacheProfileName = "Default", VaryByQueryKeys = new string[] { "page", "limit" })]
         public async Task<PageResponse<QueryPageTitlle>> QueryPageTitleAsync([FromQuery]PageLimit pl)
         {
-            if (pl.Page == 0 || pl.Limit == 0){
-                pl.Page = 1; pl.Limit = 10;
+            if (pl.Page == 0){
+                pl.Page = 1;
+            }
+            if (pl.Limit == 0)
+            {
+               pl.Limit = 10;
             }
 
             var pages = await _context.Page.ToListAsync();
             var count = pages.Count();
 
-            var result = pages.OrderByDescending(o => o.Page_Id)
+            var result = pages.OrderByDescending(o => o.Create_Dt)
                 .Skip((pl.Page - 1) * pl.Limit)
                 .Take(pl.Limit)
                 .Select(s => new PageTitleDto{

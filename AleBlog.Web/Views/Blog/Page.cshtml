@@ -2,8 +2,7 @@
     ViewData["Title"] = "文章详情";
 }
 @section CSS{
-    <link rel="stylesheet" href="~/lib/editor.md/css/editormd.preview.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/editor.md/css/editormd.preview.min.css" asp-append-version="true" />
 }
 <div class="main">
     <div class="container">
@@ -19,7 +18,7 @@
                     </div>
                 </header>
                 <div class="post-content" id="content">
-                    <textarea style="display:none;">{{@@result.page_Content}}</textarea>
+                    <textarea style="display: none;">{{@@result.page_Content}}</textarea>
                 </div>
                 <section class="page-nav">
                     {{if result.previous }}
@@ -46,21 +45,24 @@
             //dev
             var api_domain = "http://localhost:5002";
             //produce
-            //var api_domain = "http://47.95.255.71:7002";
-         
-            console.log("page_id:" + getQueryVariable("page_id"));
+           // var api_domain = "http://47.95.255.71:7002";
 
             var page_id = getQueryVariable("page_id");
+           async function getPage() {
+                await axios.get(`${api_domain}/blog/page?page_id=${page_id}`).then(function (response) {
+                    if (response.status == '200') {
+                        var html = template('page_tmpl', response.data);
+                        document.querySelector('.page-wrap').innerHTML = html;
+                    }
+                    else {
+                        console.log(response.data.message);
+                    }
+                   
+                    editormd.markdownToHTML("content");
 
-            axios.get(`${api_domain}/blog/page?page_id=${page_id}`).then(function (response) {
-                if (response.status == '200') {
-                    var html = template('page_tmpl', response.data);
-                    document.querySelector('.page-wrap').innerHTML = html;
-                }
-                else {
-                    console.log(response.data.message);
-                }
-                editormd.markdownToHTML("content");
-            });
+                    document.getElementsByClassName
+                });
+            }
+            getPage();
         </script>
     }

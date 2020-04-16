@@ -1,8 +1,8 @@
 ﻿@{
-    ViewData["Title"] = "Test";
+    ViewData["Title"] = "文章目录";
 }
 @section CSS{
-    <link rel="stylesheet" href="~/css/site.css" />
+
 <style>
     .paging {
         display: flex;
@@ -47,77 +47,73 @@
             //produce
             //var api_domain = "http://47.95.255.71:7002";
 
-            var page = getQueryVariable("page");
-            page = page ? Number(page): 1;
-            var limit = 4;
-            
-            axios.get(`${api_domain}/blog/page/querypage?Page=${page == false ? '1' : page}&Limit=${limit == false ? '4' : limit} `, { withCredentials: true }).then(function (response) {
 
-                if (response.status == '200') {
-                    var html = template('tpl', response.data);
-                    document.querySelector('#page-title-tpl').insertAdjacentHTML('afterbegin',html);
+            async function queryPage() {
+                var page = getQueryVariable("page");
+                page = page ? Number(page) : 1;
+                var limit = 15;
 
-                    var totalPaging = Math.ceil(response.data.total / limit);
-                    var pagingHtml = "";
+                await axios.get(`${api_domain}/blog/page/querypage?Page=${page == false ? '1' : page}&Limit=${limit == false ? '4' : limit} `, { withCredentials: true }).then(function (response) {
 
-                    var InitPageNum = 5;//分页一行显示5页
+                    if (response.status == '200') {
+                        var html = template('tpl', response.data);
+                        document.querySelector('#page-title-tpl').insertAdjacentHTML('afterbegin', html);
 
-                   
+                        var totalPaging = Math.ceil(response.data.total / limit);
+                        var pagingHtml = "";
 
-                   
+                        var InitPageNum = 5;//分页一行显示5页
 
 
-                    var halve = Math.floor(totalPaging / 2);
-                    var mp = Math.floor(InitPageNum / 2); 
+                        var halve = Math.floor(totalPaging / 2);
+                        var mp = Math.floor(InitPageNum / 2);
 
-                    var pageIndex = 1;
+                        var pageIndex = 1;
 
-                    if (halve < InitPageNum) {
-                        for (pageIndex = 1; pageIndex <= totalPaging; pageIndex++) {
-                            //当总页数低于页码行数
-                            pagingHtml += page == pageIndex ? `<span class="pagnum curr">${pageIndex}</span>` : `<a class="pagnum" href="?page=${pageIndex}&limit=${limit}">${pageIndex}</a>`;
+                        if (halve < InitPageNum) {
+                            for (pageIndex = 1; pageIndex <= totalPaging; pageIndex++) {
+                                //当总页数低于页码行数
+                                pagingHtml += page == pageIndex ? `<span class="pagnum curr">${pageIndex}</span>` : `<a class="pagnum" href="?page=${pageIndex}&limit=${limit}">${pageIndex}</a>`;
+                            }
                         }
+
+                        if (halve >= InitPageNum) {
+                            pagingHtml += page == 1 ? `<span class="pagnum curr">▲</span>` : `<a class="pagnum" href="?page=${page - 1}&limit=${limit}">▲</a>`;
+                            if (page >= 1 && page < InitPageNum) {
+                                for (pageIndex = 1; pageIndex <= InitPageNum; pageIndex++) {
+                                    pagingHtml += page == pageIndex ? `<span class="pagnum curr">${pageIndex}</span>` : `<a class="pagnum" href="?page=${pageIndex}&limit=${limit}">${pageIndex}</a>`;
+                                }
+                                pagingHtml += '<span class="pagnum">...</span>';
+                                pagingHtml += `<a class="pagnum" href="?page=${totalPaging}&limit=${limit}">${totalPaging}</a>`;
+                            }
+
+                            if (page >= InitPageNum && page <= totalPaging - InitPageNum) {
+                                pagingHtml += `<a class="pagnum" href="?page=${1}&limit=${limit}">1</a>`;
+                                pagingHtml += '<span class="pagnum">...</span>';
+                                for (pageIndex = (page - mp); pageIndex <= (page + mp); pageIndex++) {
+                                    pagingHtml += page == pageIndex ? `<span class="pagnum curr">${pageIndex}</span>` : `<a class="pagnum" href="?page=${pageIndex}&limit=${limit}">${pageIndex}</a>`;
+                                }
+                                pagingHtml += '<span class="pagnum">...</span>';
+                                pagingHtml += `<a class="pagnum" href="?page=${totalPaging}&limit=${limit}">${totalPaging}</a>`;
+                            }
+
+                            if (page <= totalPaging && page > totalPaging - InitPageNum) {
+                                pagingHtml += `<a class="pagnum" href="?page=${1}&limit=${limit}">1</a>`;
+                                pagingHtml += '<span class="pagnum">...</span>';
+                                for (pageIndex = (totalPaging - InitPageNum); pageIndex <= totalPaging; pageIndex++) {
+                                    pagingHtml += page == pageIndex ? `<span class="pagnum curr">${pageIndex}</span>` : `<a class="pagnum" href="?page=${pageIndex}&limit=${limit}">${pageIndex}</a>`;
+                                }
+                            }
+                            pagingHtml += page == totalPaging ? `<span class="pagnum curr">▼</span>` : `<a class="pagnum" href="?page=${page - 1}&limit=${limit}">▼</a>`;
+                        }
+
+                        document.querySelector('.paging').innerHTML = pagingHtml;
                     }
-
-                    if (halve >= InitPageNum) {
-                        pagingHtml += page == 1 ? `<span class="pagnum curr">▲</span>` : `<a class="pagnum" href="?page=${page - 1}&limit=${limit}">▲</a>`;
-                        if (page >= 1 && page < InitPageNum) {
-                            for (pageIndex = 1; pageIndex <= InitPageNum; pageIndex++) {
-                                pagingHtml += page == pageIndex ? `<span class="pagnum curr">${pageIndex}</span>` : `<a class="pagnum" href="?page=${pageIndex}&limit=${limit}">${pageIndex}</a>`;
-                            }
-                            pagingHtml += '<span class="pagnum">...</span>';
-                            pagingHtml += `<a class="pagnum" href="?page=${totalPaging}&limit=${limit}">${totalPaging}</a>`;
-                        }
-
-                        if (page >= InitPageNum && page <= totalPaging - InitPageNum) {
-                            pagingHtml += `<a class="pagnum" href="?page=${1}&limit=${limit}">1</a>`;
-                            pagingHtml += '<span class="pagnum">...</span>';
-                            for (pageIndex = (page - mp); pageIndex <= (page + mp); pageIndex++) {
-                                pagingHtml += page == pageIndex ? `<span class="pagnum curr">${pageIndex}</span>` : `<a class="pagnum" href="?page=${pageIndex}&limit=${limit}">${pageIndex}</a>`;
-                            }
-                            pagingHtml += '<span class="pagnum">...</span>';
-                            pagingHtml += `<a class="pagnum" href="?page=${totalPaging}&limit=${limit}">${totalPaging}</a>`;
-                        }
-
-                        if (page <= totalPaging && page > totalPaging - InitPageNum) {
-                            pagingHtml += `<a class="pagnum" href="?page=${1}&limit=${limit}">1</a>`;
-                            pagingHtml += '<span class="pagnum">...</span>';
-                            for (pageIndex = (totalPaging - InitPageNum); pageIndex <= totalPaging; pageIndex++) {
-                                pagingHtml += page == pageIndex ? `<span class="pagnum curr">${pageIndex}</span>` : `<a class="pagnum" href="?page=${pageIndex}&limit=${limit}">${pageIndex}</a>`;
-                            }
-                        }
-                        pagingHtml += page == totalPaging ? `<span class="pagnum curr">▼</span>` : `<a class="pagnum" href="?page=${page - 1}&limit=${limit}">▼</a>`;
+                    else {
+                        console.log(response.data.message);
                     }
-
-                
-
-
-
-                    document.querySelector('.paging').innerHTML = pagingHtml;
-                }
-                else {
-                    console.log(response.data.message);
-                }
-            });
+                });
+            }
+            queryPage();
         </script>
     }

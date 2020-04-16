@@ -19,7 +19,7 @@ namespace AleBlog.API
                 .ConfigureWebHostDefaults(builder =>
                 {
                     builder.ConfigureKestrel(options =>{options.AddServerHeader = false;})
-                    .UseUrls("http://*:5000")
+                    .UseUrls("http://*:5002")
                     .UseStartup<Program>();
                 }).Build().RunAsync();
 

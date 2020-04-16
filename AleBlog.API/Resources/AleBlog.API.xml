@@ -25,6 +25,31 @@
             <param name="timeStamp"></param>
             <returns></returns>
         </member>
+        <member name="P:AleBlog.API.Model.Dto.Blog.PageDto.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:AleBlog.API.Model.Dto.Blog.PageDto.Page_Content">
+            <summary>
+            内容 markdown 
+            </summary>
+        </member>
+        <member name="P:AleBlog.API.Model.Dto.Blog.PageDto.page_html">
+            <summary>
+            markdown 转 html
+            </summary>
+        </member>
+        <member name="P:AleBlog.API.Model.Dto.Blog.PageDto.Author">
+            <summary>
+            作者
+            </summary>
+        </member>
+        <member name="P:AleBlog.API.Model.Dto.Blog.PageDto.Create_Dt_Str">
+            <summary>
+            创建时间
+            </summary>
+        </member>
         <member name="P:AleBlog.API.Model.Dto.Blog.PageLimit.Page">
             <summary>
             页码

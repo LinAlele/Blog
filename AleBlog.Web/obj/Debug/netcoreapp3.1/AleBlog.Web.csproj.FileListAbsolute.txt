@@ -350,3 +350,4 @@ D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.csproj.Core
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.MvcApplicationPartsAssemblyInfo.cs
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.MvcApplicationPartsAssemblyInfo.cache
 D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Page.cshtml.g.cs
+D:\代码库\AleBlog\AleBlog.Web\obj\Debug\netcoreapp3.1\AleBlog.Web.csprojAssemblyReference.cache
