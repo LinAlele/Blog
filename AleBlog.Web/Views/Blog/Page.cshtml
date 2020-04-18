@@ -3,6 +3,16 @@
 }
 @section CSS{
     <link rel="stylesheet" href="~/lib/editor.md/css/editormd.preview.min.css" asp-append-version="true" />
+<style>
+    .gotop-box {
+        position: fixed;
+        cursor: pointer;
+        bottom: 40px;
+        right: 5%;
+        font-size: 30px;
+        color: #409eff; 
+    }
+</style>
 }
 <div class="main">
     <div class="container">
@@ -30,6 +40,9 @@
                 </section>
             </script>
         </article>
+        <div id="gotop-box" class="gotop-box">
+            <i>▲</i>
+        </div>
     </div>
 </div>
     @section Scripts{
@@ -62,6 +75,20 @@
 
                     document.getElementsByClassName
                 });
+            }
+
+            var gotop_box = document.getElementById("gotop-box");
+            var scrollTop = null;
+            gotop_box.onclick = function () {
+                var timer = setInterval(function () {
+                    window.scrollBy(0, -200);
+                    if (scrollTop == 0)
+                        clearInterval(timer);
+                }, 2);
+            };
+            window.onscroll = function () {
+                scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+                gotop_box.style.display = (scrollTop >= 300) ? "block" : "none";
             }
             getPage();
         </script>
