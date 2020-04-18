@@ -76,20 +76,29 @@
                     document.getElementsByClassName
                 });
             }
-
-            var gotop_box = document.getElementById("gotop-box");
-            var scrollTop = null;
-            gotop_box.onclick = function () {
-                var timer = setInterval(function () {
-                    window.scrollBy(0, -200);
-                    if (scrollTop == 0)
-                        clearInterval(timer);
-                }, 2);
-            };
-            window.onscroll = function () {
-                scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-                gotop_box.style.display = (scrollTop >= 300) ? "block" : "none";
+            /**
+             * [文章置顶功能]
+             * 获取按钮事件置顶
+             * 事件监听window窗体滑动条
+             * param:
+             * return:void
+             * */
+            function GoBodyTop() {
+                var gotop_box = document.getElementById("gotop-box");
+                var scrollTop = null;
+                gotop_box.onclick = function () {
+                    var timer = setInterval(function () {
+                        window.scrollBy(0, -200);
+                        if (scrollTop == 0)
+                            clearInterval(timer);
+                    }, 2);
+                };
+                window.onscroll = function () {
+                    scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+                    gotop_box.style.display = (scrollTop >= 300) ? "block" : "none";
+                }
             }
+            GoBodyTop();
             getPage();
         </script>
     }
