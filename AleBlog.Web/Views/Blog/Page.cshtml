@@ -3,16 +3,16 @@
 }
 @section CSS{
     <link rel="stylesheet" href="~/lib/editor.md/css/editormd.preview.min.css" asp-append-version="true" />
-<style>
-    .gotop-box {
-        position: fixed;
-        cursor: pointer;
-        bottom: 40px;
-        right: 5%;
-        font-size: 30px;
-        color: #409eff; 
-    }
-</style>
+    <style>
+        .gotop-box {
+            position: fixed;
+            cursor: pointer;
+            bottom: 40px;
+            right: 5%;
+            font-size: 30px;
+            color: #409eff;
+        }
+    </style>
 }
 <div class="main">
     <div class="container">
@@ -30,6 +30,21 @@
                 <div class="post-content" id="content">
                     <textarea style="display: none;">{{@@result.page_Content}}</textarea>
                 </div>
+                <h2>End</h2>
+                <section class="page-crt">
+                    <p class="crt-item">
+                        <span>Author:</span>
+                        <span>{{@@result.author}}</span>
+                    </p>
+                    <p class="crt-item">
+                        <span>Permalink:</span>
+                        <span><a href="{{@@url}}">{{@@url}}</a></span>
+                    </p>
+                    <p class="crt-item">
+                        <span>License:</span>
+                        <span>本文采用<a href="https://baike.baidu.com/item/%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB/1607078?fr=aladdin"> 知识共享 署名-非商业性使用-禁止演绎(CC BY-NC-ND)国际许可协议 </a>进行许可</span>
+                    </p>
+                </section>
                 <section class="page-nav">
                     {{if result.previous }}
                     <a class="prev" href="/Blog/Page?page_id={{@@result.previous.page_Id}}">{{@@result.previous.title}}</a>
@@ -45,60 +60,61 @@
         </div>
     </div>
 </div>
-    @section Scripts{
-        <script src="~/js/axios.min.js"></script>
-        <script src="~/js/template-web.js"></script>
-        <script src="~/js/jquery-3.4.1.min.js"></script>
-        <script src="~/lib/editor.md/editormd.min.js"></script>
-        <script src="~/lib/editor.md/lib/marked.min.js"></script>
-        <script src="~/lib/editor.md/lib/prettify.min.js"></script>
+@section Scripts{
+    <script src="~/js/axios.min.js"></script>
+    <script src="~/js/template-web.js"></script>
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+    <script src="~/lib/editor.md/editormd.min.js"></script>
+    <script src="~/lib/editor.md/lib/marked.min.js"></script>
+    <script src="~/lib/editor.md/lib/prettify.min.js"></script>
 
-        <script>
+    <script>
 
-            //dev
-            var api_domain = "http://localhost:5002";
-            //produce
-           // var api_domain = "http://47.95.255.71:7002";
+        //dev
+        var api_domain = "http://localhost:5002";
+        //produce
+        //var api_domain = "http://47.95.255.71:7002";
 
-            var page_id = getQueryVariable("page_id");
-           async function getPage() {
-                await axios.get(`${api_domain}/blog/page?page_id=${page_id}`).then(function (response) {
-                    if (response.status == '200') {
-                        var html = template('page_tmpl', response.data);
-                        document.querySelector('.page-wrap').innerHTML = html;
-                    }
-                    else {
-                        console.log(response.data.message);
-                    }
-                   
-                    editormd.markdownToHTML("content");
-
-                    document.getElementsByClassName
-                });
-            }
-            /**
-             * [文章置顶功能]
-             * 获取按钮事件置顶
-             * 事件监听window窗体滑动条
-             * param:
-             * return:void
-             * */
-            function GoBodyTop() {
-                var gotop_box = document.getElementById("gotop-box");
-                var scrollTop = null;
-                gotop_box.onclick = function () {
-                    var timer = setInterval(function () {
-                        window.scrollBy(0, -200);
-                        if (scrollTop == 0)
-                            clearInterval(timer);
-                    }, 2);
-                };
-                window.onscroll = function () {
-                    scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-                    gotop_box.style.display = (scrollTop >= 300) ? "block" : "none";
+        var page_id = getQueryVariable("page_id");
+        function getPage() {
+            axios.get(`${api_domain}/blog/page?page_id=${page_id}`).then(function (response) {
+                if (response.status == '200') {
+                    response.data.url = location.href;
+                    var html = template('page_tmpl', response.data);
+                    document.querySelector('.page-wrap').innerHTML = html;
                 }
+                else {
+                    console.log(response.data.message);
+                }
+
+                editormd.markdownToHTML("content");
+
+                document.getElementsByClassName
+            });
+        }
+        /**
+         * [文章置顶功能]
+         * 获取按钮事件置顶
+         * 事件监听window窗体滑动条
+         * param:
+         * return:void
+         * */
+        function GoBodyTop() {
+            var gotop_box = document.getElementById("gotop-box");
+            var scrollTop = null;
+            gotop_box.onclick = function () {
+                var timer = setInterval(function () {
+                    window.scrollBy(0, -200);
+                    if (scrollTop == 0)
+                        clearInterval(timer);
+                }, 2);
+            };
+            window.onscroll = function () {
+                scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+                gotop_box.style.display = (scrollTop >= 300) ? "block" : "none";
             }
-            GoBodyTop();
-            getPage();
-        </script>
-    }
+        }
+        GoBodyTop();
+        getPage();
+    </script>
+}

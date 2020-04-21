@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     @RenderSection("CSS", required: false)
     <title>@ViewData["Title"] - AleBlog</title>
 </head>
@@ -13,11 +13,10 @@
             <nav class="navbar">
                 <div class="container">
                     <div class="navbar-header">
-                        <a id="header-left-btn" title="点击收缩导航栏" style="font-size:10px;">⇱ </a>
                         <a href="/">林阿乐🌝</a>
                     </div>
                     <div class="menu navbar-right">
-                        <a class="menu-item" href="javascript:">文章</a>
+                        <a class="menu-item" href="/">文章</a>
                         <a class="menu-item" href="javascript:">~</a>
                     </div>
                 </div>

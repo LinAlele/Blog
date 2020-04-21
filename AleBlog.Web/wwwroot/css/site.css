@@ -4,7 +4,7 @@
 }
 
 html {
-    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;prev
 }
 
 a {
@@ -69,12 +69,24 @@ a:hover {
     text-align: justify;
 }
 
-
+.page-nav a.prev, .page-nav a.next {
+    font-weight: 600;
+    font-size: 15px;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+    transition-duration: .3s;
+}
+.page-nav a.prev:hover {
+    transform: translateX(-4px);
+}
+.page-nav a.next:hover {
+    transform: translateX(4px);
+}
 .page-nav a.prev {
     float: left;
 }
 
-.page-nav [class |=next] {
+.page-nav a.next{
     float: right;
 }
 
@@ -86,6 +98,15 @@ a:hover {
     content: "▶";
 }
 
+.page-crt {
+    margin-top: 5rem;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.page-crt .crt-item {
+    margin: 4px 0;
+}
 
 /* phone */
 @media only screen and (max-device-width: 480px) and (min-device-width: 320px) {

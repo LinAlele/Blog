@@ -36,7 +36,6 @@
         </script>
         <nav class="paging"></nav>
     </div>
-    
 </div>
     @section Scripts{
         <script src="~/js/axios.min.js"></script>
@@ -48,12 +47,12 @@
             //var api_domain = "http://47.95.255.71:7002";
 
 
-            async function queryPage() {
+            function queryPage() {
                 var page = getQueryVariable("page");
                 page = page ? Number(page) : 1;
                 var limit = 15;
 
-                await axios.get(`${api_domain}/blog/page/querypage?Page=${page == false ? '1' : page}&Limit=${limit == false ? '4' : limit} `, { withCredentials: true }).then(function (response) {
+                axios.get(`${api_domain}/blog/page/querypage?Page=${page == false ? '1' : page}&Limit=${limit == false ? '4' : limit} `, { withCredentials: true }).then(function (response) {
 
                     if (response.status == '200') {
                         var html = template('tpl', response.data);
