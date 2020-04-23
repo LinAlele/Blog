@@ -41,10 +41,12 @@
         <script src="~/js/axios.min.js"></script>
         <script src="~/js/template-web.js"></script>
         <script>
+            
             //dev
-            var api_domain = "http://localhost:5002";
+           // var api_domain = "http://localhost:5002";
             //produce
-            //var api_domain = "http://47.95.255.71:7002";
+            //pi
+            var api_domain ='http://'+ location.hostname + ':5002';
 
 
             function queryPage() {

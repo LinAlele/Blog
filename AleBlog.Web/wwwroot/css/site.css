@@ -1,10 +1,18 @@
-﻿body {
+﻿*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
     margin: 0;
     line-height: 2em;
 }
 
 html {
-    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;prev
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 }
 
 a {
@@ -108,6 +116,15 @@ a:hover {
     margin: 4px 0;
 }
 
+.footer {
+    width: 100%;
+    text-align: center;
+}
+
+.copyright {
+    font-size: 14px;
+    padding-top: 40px;
+}
 /* phone */
 @media only screen and (max-device-width: 480px) and (min-device-width: 320px) {
     .pmobile {
@@ -116,5 +133,13 @@ a:hover {
 
     .article-item-createdt{
         display:none;
+    }
+
+    .footer {
+        height: 3rem;
+        width: 100%;
+        text-align: center;
+        line-height: 1.5rem;
+        padding-top: 2em;
     }
 }

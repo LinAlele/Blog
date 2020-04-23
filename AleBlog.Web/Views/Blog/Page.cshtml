@@ -16,7 +16,7 @@
 }
 <div class="main">
     <div class="container">
-        <article class="page-wrap  pmobile">
+        <article class="page-wrap pmobile">
             <script id="page_tmpl" type="text/template">
                 <header class="page-header">
                     <h1 class="page-title">{{@@result.title}}</h1>
@@ -27,7 +27,7 @@
                         </span>
                     </div>
                 </header>
-                <div class="post-content" id="content">
+                <div class="page-content" id="content">
                     <textarea style="display: none;">{{@@result.page_Content}}</textarea>
                 </div>
                 <h2>End</h2>
@@ -71,9 +71,9 @@
     <script>
 
         //dev
-        var api_domain = "http://localhost:5002";
-        //produce
-        //var api_domain = "http://47.95.255.71:7002";
+        //var api_domain = "http://localhost:5002";
+        //pi
+        var api_domain = 'http://' + location.hostname + ':5002';
 
         var page_id = getQueryVariable("page_id");
         function getPage() {

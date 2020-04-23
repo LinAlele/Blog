@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     @RenderSection("CSS", required: false)
     <title>@ViewData["Title"] - AleBlog</title>
@@ -23,6 +24,13 @@
             </nav>
         </header>
         @RenderBody()
+        <footer id="footer" class="footer">
+            <div class="copyright">
+                <span>
+                    Linalele.com | Powered by <a target="_blank" href="http://dot.net">.NET Core 3.1</a> on Linux
+                </span>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

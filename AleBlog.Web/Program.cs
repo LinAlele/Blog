@@ -21,7 +21,7 @@ namespace AleBlog.Web
             await Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(builder =>
             {
                 builder.ConfigureKestrel(options => { options.AddServerHeader = false; })
-                       .UseUrls("http://*:5003")
+                       .UseUrls("http://*:7003")
                        .UseStartup<Program>();
             }).Build().RunAsync();
         }
