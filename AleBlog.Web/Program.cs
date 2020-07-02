@@ -21,7 +21,7 @@ namespace AleBlog.Web
             await Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(builder =>
             {
                 builder.ConfigureKestrel(options => { options.AddServerHeader = false; })
-                       .UseUrls("http://*:7003")
+                       .UseUrls("http://*:7001")
                        .UseStartup<Program>();
             }).Build().RunAsync();
         }
@@ -32,6 +32,22 @@ namespace AleBlog.Web
             services.AddSignalR() ;
             services.AddSingleton(HtmlEncoder.Create(new[] { UnicodeRanges.BasicLatin, UnicodeRanges.CjkUnifiedIdeographs }));
             services.AddMvc().AddRazorRuntimeCompilation();
+
+            services.AddCors(option =>
+            {
+                option.AddPolicy("_myAllowSpecificOrigins",
+                    builder =>
+                    {
+                        //    builder.AllowAnyMethod()
+                        //        .SetIsOriginAllowed(_ => true)
+                        //    .AllowAnyHeader()
+                        //.AllowAnyHeader()
+                        //.AllowCredentials();
+                        builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
         }
 
         public void Configure(IApplicationBuilder app)
@@ -40,7 +56,7 @@ namespace AleBlog.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseCors("CorsApp");
+            app.UseCors("_myAllowSpecificOrigins");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
