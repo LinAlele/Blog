@@ -40,6 +40,20 @@ namespace AleBlog.API.Controllers
         }
 
         /// <summary>
+        /// 返回路径
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("dir")]
+        [ResponseCache(CacheProfileName = "Default")]
+        public async Task<string> GetDir(int page_id)
+        {
+            string result = $"AppDomain.CurrentDomain.BaseDirectory={AppDomain.CurrentDomain.BaseDirectory};Environment.CurrentDirectory={Environment.CurrentDirectory};";
+
+            return result;
+        }
+
+        /// <summary>
         /// 返回博客文
         /// </summary>
         /// <param name="page_id"></param>

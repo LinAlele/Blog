@@ -14,7 +14,10 @@ namespace AleBlog.API.BaseStuct
     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite($"DataSource={AppDomain.CurrentDomain.BaseDirectory + "db" +"\\"+"AleNet.db"}");
+            //windows
+            //optionsBuilder.UseSqlite($"DataSource={AppDomain.CurrentDomain.BaseDirectory + "db" +"\\"+"AleNet.db"}");
+            //linux
+            optionsBuilder.UseSqlite($"DataSource={AppDomain.CurrentDomain.BaseDirectory + "db" +"/"+"AleNet.db"}");
         }
     }
     
