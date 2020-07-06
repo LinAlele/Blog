@@ -22,6 +22,7 @@ using AleBlog.API.Model.Entity.Blog;
 using AleBlog.API.Model.Dto.Blog;
 using AleBlog.API.Model.Dto.Response;
 using System.Globalization;
+using Swashbuckle.AspNetCore.Filters.Extensions;
 
 namespace AleBlog.API.Controllers
 {
@@ -145,6 +146,18 @@ namespace AleBlog.API.Controllers
                       PageTitleDtos=s.ToList()
                 }).ToList();
             return new PageResponse<QueryPageTitlle>() { Total=count,Data=result};
+        }
+
+        public async Task<Responce<object>> PutPageQuery()
+        {
+            var response = new Responce<object>();
+
+            Model.Entity.Blog.Page page = new Model.Entity.Blog.Page();
+            
+            //something data
+            response.Result =await _context.Page.AddAsync(page);
+
+            return response;
         }
 
         /// <summary>
